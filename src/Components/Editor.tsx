@@ -44,13 +44,14 @@ export function Editor({ note, onChange }: EditorProps) {
         {note.tags.map(tag => (
           <span className={`edit-tag ${tag.color ? `color-${tag.color}` : ''}`} key={tag.label}>
             {tag.label}
-            {/* TODO Day2: クリックでタグを削除できるようにする */}
-            <button className="tag-remove-btn">×</button>
+            {/* クリックでタグを削除できるようにする */}
+            <button
+              className="tag-remove-btn"
+              onClick={() => onChange({ tags: note.tags.filter(t => t.label !== tag.label) })}
+            >×</button>
           </span>
         ))}
 
-
-        {/* TODO Day2: Enter キーでタグを追加する input */}
         <input
           className="tag-add-input"
           name="tag"
