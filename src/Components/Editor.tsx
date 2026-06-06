@@ -14,6 +14,7 @@ interface EditorProps {
 
 export function Editor({ note, onChange }: EditorProps) {
   const [tagInput, setTagInput] = useState('')
+  const textCount = note.content.replace(/\s/g, '').length
 
   function addTag(label: string) {
     // 入力されたタグをトリミングする
@@ -96,10 +97,8 @@ export function Editor({ note, onChange }: EditorProps) {
       </div>
 
       {/* ── ステータスバー ── */}
-      {/* TODO Day2: 字数・文字数を動的に計算する */}
       <div className="statusbar">
-        <span className="stat-item">✎ 42 語</span>
-        <span className="stat-item">◌ 98 文字</span>
+        <span className="stat-item">◌ {textCount} 文字</span>
         <div className="kbd-hint">
           <kbd>Enter</kbd>
           <span>でタグを追加</span>
