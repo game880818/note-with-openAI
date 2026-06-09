@@ -7,6 +7,8 @@ import type { AiActionType } from '../utils/ai'
 import { getAiResponse, AI_ACTION_META } from '../utils/ai'
 import { formalFullTimeJa } from '../utils/formalTime'
 
+import ReactMarkdown from 'react-markdown'
+
 interface AiPanelProps {
   content: string, // 現在のノートの本文
   onClose: () => void
@@ -34,7 +36,6 @@ export function AiPanel({ content, onClose }: AiPanelProps) {
   const hasContent = content.trim().length > 0
 
   async function handleAiAction(action: AiActionType) {
-    console.log(`handleAiAction: ${action}`);
 
     if (loading) return
     setLoading(true)
@@ -147,7 +148,9 @@ export function AiPanel({ content, onClose }: AiPanelProps) {
                 {res.timestamp}
               </span>
             </div>
-            <div className="ai-card-body">{res.content}</div>
+            <div className="ai-card-body">
+              <ReactMarkdown>{res.content}</ReactMarkdown>
+            </div>
           </div>
         ))}
       </div>

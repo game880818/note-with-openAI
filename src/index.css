@@ -60,7 +60,7 @@ body {
   --font-note: 'Gowun Dodum', sans-serif;
 
   --sidebar-w: 218px;
-  --ai-panel-w: 230px;
+  --ai-panel-w: 320px;
   --topbar-h: 50px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
