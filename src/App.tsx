@@ -1,13 +1,3 @@
-// ── Day 1: App（静的シェル）──────────────────────────────────────────────────
-// 現在は全コンポーネントをただ並べているだけ。
-//
-// TODO Day2 でここに追加するもの：
-//   const [notes, setNotes]       = useState<Note[]>(SEED_NOTES)
-//   const [activeId, setActiveId] = useState<string | null>(notes[0].id)
-//   → notes・activeId を各コンポーネントに props で渡す
-//   → localStorage の読み書き（useEffect）
-//   → handleNew / handleDelete / handleChange 関数
-//
 // TODO Day3 でここに追加するもの：
 //   const [aiOpen, setAiOpen] = useState(true)
 //   → aiOpen を Topbar・AiPanel に渡す
@@ -54,9 +44,11 @@ export default function App() {
     return savedNotes[0]?.id ?? null
   })
 
+  const [aiOpen, setAiOpen] = useState(true)
+
   const activeNote = notes.find(item => item.id === activeId) ?? null
 
-  // notes を localStorage に保存 & notes が変化したとき再実行
+  // notes を localStorage に保存 & notes が変化したときのみ再実行
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
@@ -111,6 +103,8 @@ export default function App() {
       <Topbar
         title={activeNote?.title ?? ''}
         updatedAt={activeNote?.updatedAt ?? ''}
+        aiOpen={aiOpen}
+        onAiToggle={() => setAiOpen(status => !status)}
         onDelete={() => activeId && handleDelete(activeId)}
         hasNote={activeNote !== null}
       />
@@ -134,7 +128,12 @@ export default function App() {
           </div>
         </div>
       )}
-      <AiPanel />
+      {aiOpen &&
+        <AiPanel
+          content={activeNote?.content ?? ''}
+          onClose={() => setAiOpen(false)}
+        />
+      }
     </div>
   )
 }

@@ -1,5 +1,4 @@
-// ── Day 1: 型定義 ─────────────────────────────────────────────────────────
-// TODO Day2: AiActionType・AiResult 型を追加する
+import type { AiActionType } from '../utils/ai'
 
 export type TagColor = 'pink' | 'mint' | 'blue' | 'lemon' | 'lavender'
 
@@ -16,4 +15,12 @@ export interface Note {
   stripeColor: string  // サイドバーの左カラーライン
   createdAt: string    // ISO string
   updatedAt: string    // ISO string
+}
+
+// 結果カードの型
+export interface AiResult {
+  action: AiActionType
+  content: string
+  dotColor: string
+  timestamp: string
 }
