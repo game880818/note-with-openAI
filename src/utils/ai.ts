@@ -16,7 +16,8 @@ export async function getAiResponse(action: AiActionType, text: string): Promise
 
   const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY as string
   // https://api.anthropic.com/v1/messages
-  const { data } = await axios.post('/api/claude/v1/messages',
+  // /api/claude/v1/messages
+  const { data } = await axios.post('https://api.anthropic.com/v1/messages',
     {
       model: 'claude-sonnet-4-6',
       max_tokens: 1024,
@@ -32,6 +33,7 @@ export async function getAiResponse(action: AiActionType, text: string): Promise
         'X-Api-Key': apiKey,
         'anthropic-version': '2023-06-01',
         'Content-Type': 'application/json',
+        // ブラウザから直接 API を叩くことを許可する
         'anthropic-dangerous-direct-browser-access': 'true'
       }
     }
