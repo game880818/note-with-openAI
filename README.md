@@ -15,13 +15,14 @@
 ---
 
 ## 📸 スクリーンショット
+--メイン画面
 ![メイン画面](https://github.com/user-attachments/assets/fda552c7-4bed-4379-8121-72e542d37eca)
-
+--AIパネル
 ![AIパネル](https://github.com/user-attachments/assets/1c71b46e-6212-42c3-8de5-084d2c98b290)
-
+--タグ絞り込み
 ![タグ絞り込み](https://github.com/user-attachments/assets/c6a24e8e-988f-4db8-8f29-9f7c997ee6c9)
-
-![デモ](https://github.com/user-attachments/assets/93c1c023-6dc0-41c9-8f1b-7ad7d1516cba)
+--デモgif
+![デモgif](https://github.com/user-attachments/assets/93c1c023-6dc0-41c9-8f1b-7ad7d1516cba)
 
 ---
 
